@@ -38,13 +38,18 @@ const App = () => {
             <input type="button" value="Add" onClick={handleClick} className="btn btn-primary" />
             {record.map((task, j) => (
                 <div className="d-flex  mb-3 mt-3 " key={j}>
-                    <div onClick={() => handleDel(j)} className="col-8">
-                        <h4>
+                    <div className="col-8"  >
+                        <h4 className={task.value == 'Assign' ? " " : "text-danger text-decoration-line-through"} >
                             {j + 1}. {task.name}
                         </h4>
                     </div>
-                    <div className="col-4" onClick={() => handleToggle(j)}>
-                        <input type="button" className={task.value === "Assign" ? "btn btn-primary" : "btn btn-success"} value={task.value} />
+                    <div className="col-4 d-flex">
+                        <div className="col-6" onClick={() => handleToggle(j)}>
+                            <input type="button" className={task.value === "Assign" ? "btn btn-primary" : "btn btn-success"} value={task.value} />
+                        </div>
+                        <div className="col-6 d-flex justify-content-center align-items-center"     onClick={() => handleDel(j)}>
+                            <i style={{cursor:"pointer",fontSize:"30px",color:"red"}} class="fa-solid fa-trash-can"></i>
+                        </div>
                     </div>
                 </div>
             ))}
