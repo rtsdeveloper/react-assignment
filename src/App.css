@@ -1,0 +1,11 @@
+.out-of-stock{
+    color: red;
+    font-weight: 600;
+}
+th, td{
+    background-color: #fff0 !important;
+}
+body{
+    background-color: #ffe6e6;
+    font-size: 17px;
+}
