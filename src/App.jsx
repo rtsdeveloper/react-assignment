@@ -11,7 +11,7 @@ const App = () => {
   
 
   const handleClick = () => {
-    if (data.name === "") {
+    if (data.name.trim() === "") {
       alert("Kindly Fill Task in it.");
       
     } else {
@@ -33,17 +33,11 @@ const App = () => {
     setRecord(updatedRecord);
   };
 
-  const validate = (event) => {
-    if (/^\s/.test(event.target.value)) {
-      event.target.value = '';
-    }
-  };
-
   return (
     <div className="p-5">
       <h4>Todo Task</h4>
       <div className="mb-3">
-        <input type="text" name="name" value={data.name} className="form-control-sm" onInput={validate} onChange={handleChange} />
+        <input type="text" name="name" value={data.name} className="form-control-sm" onChange={handleChange} />
       </div>
       <input type="button" value="Add" onClick={handleClick} className="btn btn-primary" />
       {record.map((task, j) => (
