@@ -5,11 +5,10 @@ const App = () => {
   const [data, setdata] = useState({ name: "", value: "Assign" });
   const [record, setRecord] = useState([]);
 
-  const handleChange = (evt) => {
-    setdata({ ...data, [evt.target.name]: evt.target.value });
+  const handleChange = (e) => {
+    setdata({ ...data, [e.target.name]: e.target.value});
   };
   
-
   const handleClick = () => {
     if (data.name.trim() === "") {
       alert("Kindly Fill Task in it.");
