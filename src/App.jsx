@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
-
     //Core Data...
     const products = [
         { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
