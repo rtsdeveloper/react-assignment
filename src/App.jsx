@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const App = () => {
   
-  const [data, setdata] = useState({ name: "", value: "Assign" });
+  const [data, setdata] = useState([{ name: "", value: "Assign" }]);
   const [record, setRecord] = useState([]);
 
   const handleChange = (e) => {
@@ -42,7 +42,9 @@ const App = () => {
       {record.map((task, j) => (
         <div className="d-flex  mb-3 mt-3 " key={j}>
           <div className="col-8"  >
-            <span><input style={{ cursor: "pointer" }} type="checkbox" className="form-check-input me-2" onClick={() => handleToggle(j)} /> <span className="h5">{j + 1}.</span> </span>
+            <span>
+              <input style={{ cursor: "pointer" }} type="checkbox" className="form-check-input me-2" onClick={() => handleToggle(j)} />
+              <span className="h5">{j + 1}.</span> </span>
             <span className={task.value == 'Assign' ? "h5" : "text-danger text-decoration-line-through h5"} >
               {task.name}
             </span>
