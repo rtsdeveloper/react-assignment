@@ -1,9 +1,10 @@
 import React from 'react'
+import Form from './Form'
 
 const App = () => {
   return (
     <div>
-      <h1>This is Main Branch</h1>
+      <Form/>
     </div>
   )
 }
