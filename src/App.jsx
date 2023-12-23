@@ -1,10 +1,9 @@
 import React from 'react'
+import NewData from './ContactUS.jsx'
 
 const App = () => {
   return (
-    <div>
-      <h1>This is Main Branch</h1>
-    </div>
+    <NewData/>
   )
 }
 
