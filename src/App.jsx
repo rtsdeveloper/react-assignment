@@ -9,7 +9,8 @@ const App = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     if (data.name.trim() === "") {
       alert("Kindly Fill Task in it.");
     } else {
@@ -40,11 +41,11 @@ const App = () => {
 
   const handleDel = (data, index) => {
     const deleteFilter = record.filter((_, i) => i !== index);
-    setRecord(deleteFilter);
+      setRecord(deleteFilter);
   };
 
   return (
-    <div className="p-5">
+    <form onSubmit={handleClick} action="#" className="p-5">
       <h4>Todo Task</h4>
       <div className="mb-3">
         <input
@@ -135,7 +136,7 @@ const App = () => {
           </div>
         </div>
       ))}
-    </div>
+    </form>
   );
 };
 
