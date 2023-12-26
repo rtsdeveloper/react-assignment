@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const App = () => {
   const [data, setData] = useState({ name: "", value: "Assign" });
   const [record, setRecord] = useState([]);
+  const [edit, setEdit] = useState(null);
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -12,21 +13,34 @@ const App = () => {
     if (data.name.trim() === "") {
       alert("Kindly Fill Task in it.");
     } else {
-      const rcds= [...record, { ...data }];
+      const rcds = [...record, { ...data }];
       setRecord(rcds);
       setData({ name: "", value: "Assign" });
     }
   };
-
-  const handleDel = (j) => {
-    const rcords = record.filter((_, i) => i !== j);
-    setRecord(rcords);
+  
+  const handleCheckbox = (index) => {
+    const updatedRecord = [...record];
+    updatedRecord[index].value = updatedRecord[index].value === "Assign" ? "Completed" : "Assign";
+    setRecord(updatedRecord);
   };
   
-  const handleCheckbox = (j) => {
+  const handleEdit = (data) => {
+    setEdit(data);
+    setData(record[data]);
+  };
+
+  const handleEditConfirmation = () => {
     const updatedRecord = [...record];
-    updatedRecord[j].value = updatedRecord[j].value === "Assign" ? "Completed" : "Assign";
+    updatedRecord[edit] = data;
     setRecord(updatedRecord);
+    setEdit(null);
+    setData({ name: "", value: "Assign" });
+  };
+  
+  const handleDel = (data,index) => {
+    const deleteFilter = record.filter((_, i) => i !== index);
+    setRecord(deleteFilter);
   };
 
   return (
@@ -47,17 +61,17 @@ const App = () => {
         onClick={handleClick}
         className="btn btn-primary"
       />
-      {record.map((task, j) => (
-        <div className="d-flex mb-3 mt-3" key={j}>
-          <div className="col-8">
+      {record.map((task, index) => (
+        <div className="d-flex mb-3 mt-3" key={index}>
+          <div className="col-6">
             <span>
               <input
                 style={{ cursor: "pointer" }}
                 type="checkbox"
                 className="form-check-input me-2"
-                onClick={() => handleCheckbox(j)}
+                onClick={() => handleCheckbox(index)}
               />
-              <span className="h5">{j + 1}.</span>{" "}
+              <span className="h5">{index + 1} . </span>{" "}
             </span>
             <span
               className={
@@ -69,8 +83,9 @@ const App = () => {
               {task.name}
             </span>
           </div>
-          <div className="col-4 d-flex">
-            <div className="col-6">
+          <div className="col-6 d-flex">
+            <div className="col-4">
+              <span className="h5">Status : </span>
               <span
                 className={
                   task.value === "Assign"
@@ -81,9 +96,32 @@ const App = () => {
                 {task.value === "Assign" ? "New" : "Completed"}
               </span>
             </div>
+            <div className="col-4 text-center">
+              {edit === index ? (
+                <i
+                  onClick={handleEditConfirmation}
+                  className="fa-regular fa-check-square"
+                  style={{
+                    cursor: "pointer",
+                    fontSize: "25px",
+                    color: "green"
+                  }}
+                ></i>
+              ) : (
+                <i
+                  onClick={() => handleEdit(index)}
+                  className="fa-regular fa-pen-to-square"
+                  style={{
+                    cursor: "pointer",
+                    fontSize: "25px",
+                    color: "blue"
+                  }}
+                ></i>
+              )}
+            </div>
             <div
-              className="col-6 d-flex justify-content-center align-items-center"
-              onClick={() => handleDel(j)}
+              className="col-4 d-flex justify-content-center align-items-center"
+              onClick={() => handleDel(data,index)}
             >
               <i
                 style={{
