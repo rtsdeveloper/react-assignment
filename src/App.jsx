@@ -18,13 +18,13 @@ const App = () => {
       setData({ name: "", value: "Assign" });
     }
   };
-  
+
   const handleCheckbox = (index) => {
     const updatedRecord = [...record];
     updatedRecord[index].value = updatedRecord[index].value === "Assign" ? "Completed" : "Assign";
     setRecord(updatedRecord);
   };
-  
+
   const handleEdit = (data) => {
     setEdit(data);
     setData(record[data]);
@@ -37,8 +37,8 @@ const App = () => {
     setEdit(null);
     setData({ name: "", value: "Assign" });
   };
-  
-  const handleDel = (data,index) => {
+
+  const handleDel = (data, index) => {
     const deleteFilter = record.filter((_, i) => i !== index);
     setRecord(deleteFilter);
   };
@@ -121,7 +121,7 @@ const App = () => {
             </div>
             <div
               className="col-4 d-flex justify-content-center align-items-center"
-              onClick={() => handleDel(data,index)}
+              onClick={() => handleDel(data, index)}
             >
               <i
                 style={{
