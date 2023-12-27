@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-const InputAdd = ({data,setData}) => {
+const InputSave = ({data,setData,setFilterdata}) => {
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
+        //setFilterdata({ ...data, [e.target.name]: e.target.value })
     };
 
     return (
@@ -21,4 +22,4 @@ const InputAdd = ({data,setData}) => {
     )
 }
 
-export default InputAdd;
+export default InputSave;

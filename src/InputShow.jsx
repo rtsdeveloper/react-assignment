@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 const InputShow = ({data, setData, record, setRecord}) => {
     
     const handleClick = (e) => {
         e.preventDefault();
-        if (data.name === "") {
+        if (data.name.trim() === "") {
             alert("Kindly Fill Task in it.");
         } else {
             let rcds = [...record, { ...data }];

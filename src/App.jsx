@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import InputAdd from "./InputAdd";
+import InputSave from "./InputSave";
 import InputShow from "./InputShow";
 import Result from "./Result";
+import InputFilter from "./InputFilter";
 
 const App = () => {
 
@@ -10,18 +11,23 @@ const App = () => {
     const [edit, setEdit] = useState(null);
 
     return (
-        <form action="#" className="p-5">
+        <div action="#" className="p-5">
             <h4>Todo Task</h4>
-            <label>
-                <InputAdd data={data} setData={setData} record={record} setRecord={setRecord} />
-            </label>
-            <label className="ms-3" >
-                <InputShow data={data} setData={setData} record={record} setRecord={setRecord} />
-            </label>
             <div>
-                <Result data={data} setData={setData} edit={edit} setEdit={setEdit} record={record} setRecord={setRecord} />
+                <label>
+                    <InputSave data={data} setData={setData} record={record} setRecord={setRecord} />
+                </label>
+                <label className="ms-3" >
+                    <InputShow data={data} setData={setData} record={record} setRecord={setRecord} />
+                </label>
+                <label className="ms-3" >
+                    <InputFilter data={data} setData={setData} record={record} setRecord={setRecord} />
+                </label>
             </div>
-        </form>
+            <div>
+                <Result edit={edit} setEdit={setEdit} record={record} setRecord={setRecord} />
+            </div>
+        </div>
     );
 };
 
