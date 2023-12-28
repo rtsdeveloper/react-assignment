@@ -12,12 +12,12 @@ const InputFilter = ({ record}) => {
 
     return (
         <>
-            <input
+            {/* <input
                 type="button"
                 value="Filter"
                 onClick={handleFilter}
                 className="btn btn-primary"
-            />
+            /> */}
         </>
     );
 };

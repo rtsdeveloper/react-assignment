@@ -25,7 +25,7 @@ const App = () => {
                 </label>
             </div>
             <div>
-                <Result edit={edit} setEdit={setEdit} record={record} setRecord={setRecord} />
+                <Result data={data} setData={setData} edit={edit} setEdit={setEdit} record={record} setRecord={setRecord} />
             </div>
         </div>
     );
