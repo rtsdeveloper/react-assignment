@@ -10,7 +10,6 @@ class InputShow extends Component {
             alert("Kindly Fill Task in it.");
         } else {
             let rcds = [...record, { ...data }];
-            console.log(rcds);
             setRecord(rcds);
             setData({ name: "", value: "Assign" });
         }

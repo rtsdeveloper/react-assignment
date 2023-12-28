@@ -3,6 +3,7 @@ import InputSave from "./InputSave";
 import InputShow from "./InputShow";
 import Result from "./Result";
 import InputFilter from "./InputFilter";
+import FilterData from "./FilterData";
 
 class App extends Component {
 
@@ -13,38 +14,44 @@ class App extends Component {
         this.state = {
             data: { name: "", value: "Assign" },
             record: [],
-            edit: null
+            edit: null,
+            filterData:[{}]
         };
     }
 
     render() {
 
-        const { data, record, edit } = this.state;
+        const { data, record, edit, filterData } = this.state;
 
         return (
             <div action="#" className="p-5">
-                <h4>Todo Task</h4>
+                <h2>Todo Task</h2>
                 <div>
                     <label>
                         <InputSave
                             data={data}
                             setData={this.setData}
                             record={record}
-                            setRecord={this.setRecord} />
+                            setRecord={this.setRecord}
+                        />
                     </label>
                     <label className="ms-3">
                         <InputShow
                             data={data}
                             setData={this.setData}
                             record={record}
-                            setRecord={this.setRecord} />
+                            setRecord={this.setRecord}
+                            />
                     </label>
                     <label className="ms-3">
                         <InputFilter
                             data={data}
                             setData={this.setData}
                             record={record}
-                            setRecord={this.setRecord} />
+                            setRecord={this.setRecord}
+                            filterData={filterData}
+                            setFilter={this.setFilter}
+                        />
                     </label>
                 </div>
                 <div>
@@ -54,7 +61,20 @@ class App extends Component {
                         edit={edit}
                         setEdit={this.setEdit}
                         record={record}
-                        setRecord={this.setRecord} />
+                        setRecord={this.setRecord}
+                    />
+                </div>
+                <div>
+                    <FilterData
+                        data={data}
+                        setData={this.setData}
+                        edit={edit}
+                        setEdit={this.setEdit}
+                        record={record}
+                        setRecord={this.setRecord}
+                        filterData={filterData}
+                        setFilter={this.setFilter}
+                    />
                 </div>
             </div>
         );
@@ -70,6 +90,10 @@ class App extends Component {
 
     setEdit = (newEdit) => {
         this.setState({ edit: newEdit });
+    };
+
+    setFilter = (newfilterData) => {
+        this.setState({ filterData: newfilterData });
     };
 }
 

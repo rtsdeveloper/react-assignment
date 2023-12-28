@@ -1,25 +1,28 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 
-const InputFilter = ({ record}) => {
-    const [filterdata, setFilterdata] = useState([])
+class InputFilter extends Component {
+    handleFilter = () => {
+        const { record, data, filterData, setFilter } = this.props;
 
-    const handleFilter = () => {
-        // const filteredRecords = record.filter(data =>
-        //     filterdata.name.toLowerCase().includes(filterdata.name.toLowerCase())
-        // );
-        // console.log(filteredRecords);
+        const filteredRecords = record.filter(recordItem =>
+            recordItem.name.toLowerCase().includes(data.name.toLowerCase())
+        );
+        setFilter(filteredRecords);
+        console.log(filterData);
     };
 
-    return (
-        <>
-            <input
-                type="button"
-                value="Filter"
-                onClick={handleFilter}
-                className="btn btn-primary"
-            />
-        </>
-    );
-};
+    render() {
+        return (
+            <>
+                <input
+                    type="button"
+                    value="Filter"
+                    onClick={this.handleFilter}
+                    className="btn btn-primary"
+                />
+            </>
+        );
+    }
+}
 
 export default InputFilter;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Result extends Component {
-    
+
     handleCheckbox = (index) => {
         const { record, setRecord } = this.props;
         const updatedRecord = [...record];
@@ -37,6 +37,7 @@ class Result extends Component {
 
         return (
             <>
+                <h4 className='mt-5' >1. Task List</h4>
                 {record.map((task, index) => (
                     <div className="row mb-3 mt-3" key={index}>
                         <div className="col-6">
