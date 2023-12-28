@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 
 class InputShow extends Component {
-    
+
     handleClick = (e) => {
         e.preventDefault();
         const { data, setData, record, setRecord } = this.props;
 
         if (data.name.trim() === "") {
-            alert("Kindly Fill Task in it.");
+            alert("Kindly Enter Task Here...");
+            return;
+        }
+
+        const isDuplicate = record.some(
+            (findTask) => findTask.name.toLowerCase() === data.name.toLowerCase()
+        );
+
+        if (isDuplicate) {
+            alert("Oops! Try to Add a New Task");
         } else {
-            let rcds = [...record, { ...data }];
-            setRecord(rcds);
+            const updatedRecords = [...record, { ...data }];
+            setRecord(updatedRecords);
             setData({ name: "", value: "Assign" });
         }
     };
