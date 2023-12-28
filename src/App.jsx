@@ -2,20 +2,19 @@ import React, { Component } from "react";
 import InputSave from "./InputSave";
 import InputShow from "./InputShow";
 import Result from "./Result";
-import InputFilter from "./InputFilter";
 import FilterData from "./FilterData";
 
 class App extends Component {
 
     constructor(props) {
-        
+
         super(props);
 
         this.state = {
             data: { name: "", value: "Assign" },
             record: [],
             edit: null,
-            filterData:[{}]
+            filterData: []
         };
     }
 
@@ -33,6 +32,8 @@ class App extends Component {
                             setData={this.setData}
                             record={record}
                             setRecord={this.setRecord}
+                            filterData={filterData}
+                            setFilter={this.setFilter}
                         />
                     </label>
                     <label className="ms-3">
@@ -41,16 +42,6 @@ class App extends Component {
                             setData={this.setData}
                             record={record}
                             setRecord={this.setRecord}
-                            />
-                    </label>
-                    <label className="ms-3">
-                        <InputFilter
-                            data={data}
-                            setData={this.setData}
-                            record={record}
-                            setRecord={this.setRecord}
-                            filterData={filterData}
-                            setFilter={this.setFilter}
                         />
                     </label>
                 </div>
