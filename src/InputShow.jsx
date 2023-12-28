@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 
-const InputShow = ({data, setData, record, setRecord}) => {
+class InputShow extends Component {
     
-    const handleClick = (e) => {
+    handleClick = (e) => {
         e.preventDefault();
+        const { data, setData, record, setRecord } = this.props;
+
         if (data.name.trim() === "") {
             alert("Kindly Fill Task in it.");
         } else {
@@ -13,16 +15,19 @@ const InputShow = ({data, setData, record, setRecord}) => {
             setData({ name: "", value: "Assign" });
         }
     };
-    return (
-        <>
-            <input
-                type="button"
-                value="Add"
-                onClick={handleClick}
-                className="btn btn-primary"
-            />
-        </>
-    )
+
+    render() {
+        return (
+            <>
+                <input
+                    type="button"
+                    value="Add"
+                    onClick={this.handleClick}
+                    className="btn btn-primary"
+                />
+            </>
+        );
+    }
 }
 
-export default InputShow
+export default InputShow;

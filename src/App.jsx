@@ -1,34 +1,76 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import InputSave from "./InputSave";
 import InputShow from "./InputShow";
 import Result from "./Result";
 import InputFilter from "./InputFilter";
 
-const App = () => {
+class App extends Component {
 
-    const [data, setData] = useState({ name: "", value: "Assign" });
-    const [record, setRecord] = useState([]);
-    const [edit, setEdit] = useState(null);
+    constructor(props) {
+        
+        super(props);
 
-    return (
-        <div action="#" className="p-5">
-            <h4>Todo Task</h4>
-            <div>
-                <label>
-                    <InputSave data={data} setData={setData} record={record} setRecord={setRecord} />
-                </label>
-                <label className="ms-3" >
-                    <InputShow data={data} setData={setData} record={record} setRecord={setRecord} />
-                </label>
-                <label className="ms-3" >
-                    <InputFilter data={data} setData={setData} record={record} setRecord={setRecord} />
-                </label>
+        this.state = {
+            data: { name: "", value: "Assign" },
+            record: [],
+            edit: null
+        };
+    }
+
+    render() {
+
+        const { data, record, edit } = this.state;
+
+        return (
+            <div action="#" className="p-5">
+                <h4>Todo Task</h4>
+                <div>
+                    <label>
+                        <InputSave
+                            data={data}
+                            setData={this.setData}
+                            record={record}
+                            setRecord={this.setRecord} />
+                    </label>
+                    <label className="ms-3">
+                        <InputShow
+                            data={data}
+                            setData={this.setData}
+                            record={record}
+                            setRecord={this.setRecord} />
+                    </label>
+                    <label className="ms-3">
+                        <InputFilter
+                            data={data}
+                            setData={this.setData}
+                            record={record}
+                            setRecord={this.setRecord} />
+                    </label>
+                </div>
+                <div>
+                    <Result
+                        data={data}
+                        setData={this.setData}
+                        edit={edit}
+                        setEdit={this.setEdit}
+                        record={record}
+                        setRecord={this.setRecord} />
+                </div>
             </div>
-            <div>
-                <Result edit={edit} setEdit={setEdit} record={record} setRecord={setRecord} />
-            </div>
-        </div>
-    );
-};
+        );
+    }
+
+    setData = (newData) => {
+        this.setState({ data: newData });
+    };
+
+    setRecord = (newRecord) => {
+        this.setState({ record: newRecord });
+    };
+
+    setEdit = (newEdit) => {
+        this.setState({ edit: newEdit });
+    };
+}
 
 export default App;
