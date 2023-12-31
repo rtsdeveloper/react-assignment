@@ -23,10 +23,10 @@ class App extends Component {
         const { data, record, edit, filterData } = this.state;
 
         return (
-            <div action="#" className="p-5">
+            <div className="row">
                 <h2>Todo Task</h2>
                 <div>
-                    <label>
+                    <label className="m-2">
                         <InputSave
                             data={data}
                             setData={this.setData}
@@ -36,7 +36,7 @@ class App extends Component {
                             setFilter={this.setFilter}
                         />
                     </label>
-                    <label className="ms-3">
+                    <label>
                         <InputShow
                             data={data}
                             setData={this.setData}

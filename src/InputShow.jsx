@@ -25,17 +25,16 @@ class InputShow extends Component {
     };
 
     handleDeleteall = () => {
-        const { data, setData, record, setRecord } = this.props;
+        const { setData, setRecord } = this.props;
         setRecord([]);
         setData({ name: "", value: "Assign" });
     }
 
     handleSelected = () => {
-        const { data, setData, record, setRecord } = this.props;
+        const { record, setRecord } = this.props;
         const filtereSelected = record.filter(item => item.value === 'Assign');
         console.log(filtereSelected);
         setRecord(filtereSelected);
-        console.log(record);
     }
 
     render() {

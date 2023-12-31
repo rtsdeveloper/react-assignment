@@ -15,7 +15,6 @@ class InputSave extends Component {
             recordItem.name.toLowerCase().includes(updatedFilterData.name.toLowerCase())
         );
         setFilter(filteredRecords);
-        //console.log(filterData);
     };
 
     handleCombine = (e) => {
